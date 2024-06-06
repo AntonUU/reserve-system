@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.anton.reservesystem.dao.ReserveDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.anton.reservesystem.entity.ReserveEntity" id="reserveMap">
+        <result property="reserveId" column="reserve_id"/>
+        <result property="reserveGroup" column="reserve_group"/>
+        <result property="reserveName" column="reserve_name"/>
+        <result property="reserveSex" column="reserve_sex"/>
+        <result property="reservePhone" column="reserve_phone"/>
+        <result property="reserveCard" column="reserve_card"/>
+        <result property="portrait" column="portrait"/>
+        <result property="reserveDoor" column="reserve_door"/>
+        <result property="startDatetime" column="start_datetime"/>
+        <result property="endDatetime" column="end_datetime"/>
+        <result property="updateDatetime" column="update_datetime"/>
+    </resultMap>
+
+
+</mapper>

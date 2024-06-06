@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.anton.reservesystem.dao.CatDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.anton.reservesystem.entity.CatEntity" id="catMap">
+        <result property="tabId" column="tab_id"/>
+        <result property="personName" column="person_name"/>
+        <result property="personPhone" column="person_phone"/>
+        <result property="catId" column="cat_id"/>
+        <result property="startDatetime" column="start_datetime"/>
+        <result property="endDatetime" column="end_datetime"/>
+        <result property="entrance" column="entrance"/>
+        <result property="updateDatetime" column="update_datetime"/>
+    </resultMap>
+
+
+</mapper>

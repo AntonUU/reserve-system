@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.anton.reservesystem.dao.AdminDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.anton.reservesystem.entity.AdminEntity" id="adminMap">
+        <result property="adminId" column="admin_id"/>
+        <result property="adminName" column="admin_name"/>
+        <result property="adminPhone" column="admin_phone"/>
+        <result property="permissions" column="permissions"/>
+        <result property="admin username" column="admin_ username"/>
+        <result property="adminPasswd" column="admin_passwd"/>
+    </resultMap>
+
+
+</mapper>
