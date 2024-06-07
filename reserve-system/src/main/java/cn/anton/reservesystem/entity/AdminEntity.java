@@ -1,5 +1,6 @@
 package cn.anton.reservesystem.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -22,7 +23,7 @@ public class AdminEntity implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Integer adminId;
 	/**
 	 * 姓名

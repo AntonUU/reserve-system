@@ -1,9 +1,57 @@
 server:
   port: 8000
 
+#######DataSource#########
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: Dong1123
     url: jdbc:mysql://localhost:3306/access_reservation?serverTimezone=Asia/Shanghai
+  redis:
+    host: localhost
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 8 # 连接池中的最大空闲连接
+        min-idle: 0 # 连接池中的最小空闲连接
+        max-wait: -1ms # 连接池最大阻塞等待时间（使用负值表示没有限制）
+
+  #######Kafka#########
+  kafka:
+    bootstrap-servers: localhost:9092  # 服务器地址
+    producer:
+      retries: 3   # 重试次数
+      acks: 1  # 当前开发环境单机模式   只需要首领收到即可
+      # 这里一条预约请求大概500kb左右 这里一个batch批次存储两条消息 负责写不进去
+      batch-size: 1048576
+      # 缓冲池大小 10M
+      buffer-memory: 10485760
+      # 如果超过20ms没有填满batch-size， 可以直接发送消息
+      properties:
+        linger:
+          ms: 20
+      # 序列化
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      enable-auto-commit: true # 是否自动提交offset
+      auto-offset-reset: latest # 重置为分区中最新的offset(消费分区中新产生的数据);
+      properties:
+        session:
+          timeout:
+            ms: 120000 # 消费会话超时时间(超过这个时间consumer没有发送心跳,就会触发rebalance操作)
+        request:
+          timeout:
+            ms: 180000 # 消费请求超时时间
+      max-poll-records: 5 # 批量消费每次最多消费5条消息
+
+    listener:
+      missing-topics-fatal: false # 消费端监听的topic不存在时，项目启动会报错(关掉)
+      type: batch # 设置批量消费
+      concurrency: 2 # 创建的消费者监听数量
+

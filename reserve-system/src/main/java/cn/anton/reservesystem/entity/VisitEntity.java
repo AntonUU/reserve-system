@@ -1,5 +1,6 @@
 package cn.anton.reservesystem.entity;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
@@ -22,7 +23,7 @@ public class VisitEntity implements Serializable {
 	/**
 	 * 
 	 */
-	@TableId
+	@TableId(type = IdType.AUTO)
 	private Long visitId;
 	/**
 	 * 被拜访人姓名
