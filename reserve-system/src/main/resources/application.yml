@@ -39,7 +39,7 @@ spring:
     consumer:
       key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
       value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      enable-auto-commit: true # 是否自动提交offset
+      enable-auto-commit: false # 是否自动提交offset
       auto-offset-reset: latest # 重置为分区中最新的offset(消费分区中新产生的数据);
       properties:
         session:
@@ -55,3 +55,10 @@ spring:
       type: batch # 设置批量消费
       concurrency: 2 # 创建的消费者监听数量
 
+logging:
+  level:
+    root: info # 日志级别
+  file: # 这里日志信息只可以保留默认的logback配置(7天), 有需要的话自行修改
+    name: reserve_system_log.log # 日志文件名
+    path: ./logs  # 日志保存路径
+  pattern: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n' # 设置日志格式

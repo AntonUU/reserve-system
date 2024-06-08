@@ -6,8 +6,11 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.connection.MessageListener;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.listener.PatternTopic;
+import org.springframework.data.redis.listener.RedisMessageListenerContainer;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 
@@ -40,6 +43,24 @@ public class RedisConfig {
         template.setKeySerializer(new StringRedisSerializer());
         template.afterPropertiesSet();
         return template;
+    }
+
+
+    /*
+        配置Redis监听规则
+     */
+    @Bean
+    public RedisMessageListenerContainer redisMessageListenerContainer(
+            RedisConnectionFactory connectionFactory,
+            MessageListener messageListener) {
+
+        RedisMessageListenerContainer container = new RedisMessageListenerContainer();
+        container.setConnectionFactory(connectionFactory);
+
+        // 设置监听的频道，这里监听了"__keyevent@0__:expired"频道，其中0是Redis数据库的索引
+        container.addMessageListener(messageListener, new PatternTopic("__keyevent@0__:expired"));
+
+        return container;
     }
 
 }

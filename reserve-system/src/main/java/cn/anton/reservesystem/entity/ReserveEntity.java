@@ -52,7 +52,12 @@ public class ReserveEntity implements Serializable {
 	/**
 	 * 预约校门
 	 */
-	private String reserveDoor;
+	private Integer reserveDoor;
+
+	/**
+	 * 预约状态 0等待受理 1通过 2过期 3拒绝
+	 */
+	private Integer reserveStatus;
 	/**
 	 * 预约开始时间
 	 */

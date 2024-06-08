@@ -45,19 +45,24 @@
 		—- 	读        1
 ```
 
+
+
 预约功能流程 /reserve/api/reserve
-    1) 用户提交预约表信息 [ReserveAppRequest.java](reserve-system%2Fsrc%2Fmain%2Fjava%2Fcn%2Fanton%2Freservesystem%2Frequest%2FReserveAppRequest.java)
-        --- 被访人选填 [VisitInfoRequest.java](reserve-system%2Fsrc%2Fmain%2Fjava%2Fcn%2Fanton%2Freservesystem%2Frequest%2FVisitInfoRequest.java)
+
+    1) 用户提交预约表信息(被访人信息选填)
     2) 用户得到等待受理通知
-        2.1)  将表单数据转为Json字符串
-        2.2)  通过KafkaProducer发送给KafkaBroker
-        2.3)  通知用户 "已预约, 等待受理"
-        2.4)  KafkaConsumer收到消息
-            1. 将json字符串转成对象
-            2. 将对象copy成对应实体类
-            3. 分别保存到对应表中
-            4. 将json字符串保存到redis中, 方便用户查看预约状态
-> **ps: 这里建议将生产与消费分别部署, 因本项目作为课程作业不想过多处理统一写在一个项目中。**
-        
-        
-    
+            1) 将表单数据转为Json字符串
+            2) 通过KafkaProducer发送给KafkaBroker
+            3) 通知用户 "已预约, 等待受理"
+            4) KafkaConsumer收到消息
+                      1) 将json字符串转成对象
+                      2) 将对象copy成对应实体类
+                      3) 分别保存到对应表中
+                      4) 将json字符串保存到redis中, 方便用户查看预约状态
+
+> [!NOTE]
+>
+> 这里建议将生产与消费分别部署, 因本项目作为课程作业不想过多处理统一写在一个项目中。
+
+
+​    

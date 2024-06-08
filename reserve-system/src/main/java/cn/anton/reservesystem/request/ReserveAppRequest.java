@@ -40,7 +40,7 @@ public class ReserveAppRequest {
     /**
      * 预约校门
      */
-    private String reserveDoor;
+    private Integer reserveDoor;
     /**
      * 预约开始时间
      */
@@ -51,6 +51,25 @@ public class ReserveAppRequest {
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
     private Date endDatetime;
+
+    /**
+     * 申请人姓名
+     */
+    private String personName;
+    /**
+     * 申请人手机号
+     */
+    private String personPhone;
+
+    /**
+     * 车牌号
+     */
+    private String catId;
+
+    /**
+     * 进出校门
+     */
+    private Integer entrance;
 
     /**
      * 被访信息(选填)

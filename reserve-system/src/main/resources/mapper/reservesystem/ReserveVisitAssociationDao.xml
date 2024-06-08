@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.anton.reservesystem.dao.ReserveVisitAssociationDao">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="cn.anton.reservesystem.entity.ReserveVisitAssociationEntity" id="reserveVisitAssociationMap">
+        <result property="association_id" column="association_id"/>
+        <result property="reserve_id" column="reserve_id"/>
+        <result property="visit_id" column="visit_id"/>
+        <result property="update_datetime" column="update_datetime"/>
+    </resultMap>
+
+
+</mapper>

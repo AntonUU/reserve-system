@@ -1,9 +1,11 @@
 package cn.anton.reservesystem.service;
 
+import cn.anton.reservesystem.request.VisitInfoRequest;
 import com.baomidou.mybatisplus.extension.service.IService;
 import cn.anton.reservesystem.entity.VisitEntity;
 import cn.anton.commonpackage.common.utils.PageUtils;
 
+import java.util.Date;
 import java.util.Map;
 
 /**
@@ -16,5 +18,7 @@ import java.util.Map;
 public interface VisitService extends IService<VisitEntity> {
 
     PageUtils queryPage(Map<String, Object> params);
+
+    VisitEntity saveVisitInfo(VisitInfoRequest visitInfo, Date date);
 }
 

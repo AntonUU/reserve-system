@@ -3,46 +3,50 @@ package cn.anton.reservesystem.entity;
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
-import lombok.Data;
 
 /**
  * 
  * 
  * @author 丶Anton
  * @email itanton666@gmail.com
- * @date 2024-06-06 23:37:37
+ * @date 2024-06-08 16:47:37
  */
 @Data
-@TableName("tab_visit")
-public class VisitEntity implements Serializable {
+@TableName("tab_reserve_visit_association")
+public class ReserveVisitAssociationEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 
 	 */
 	@TableId(type = IdType.AUTO)
+	private Long associationId;
+	/**
+	 * 预约id
+	 */
+	private Long reserveId;
+	/**
+	 * 被访id
+	 */
 	private Long visitId;
+
 	/**
-	 * 被拜访人姓名
+	 * 车辆表id
 	 */
-	private String visitName;
+	private Long catId;
+
 	/**
-	 * 拜访部门
+	 * 预约类型 1person 2cat
 	 */
-	private String visitUnit;
+	private Boolean reserveType;
+
 	/**
-	 * 随行人员
-	 */
-	private Integer accompanyingNum;
-	/**
-	 * 拜访事由
-	 */
-	private String visitContext;
-	/**
-	 * 
+	 * 更新时间
 	 */
 	private Date updateDatetime;
 

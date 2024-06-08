@@ -37,6 +37,12 @@ public class CatEntity implements Serializable {
 	 * 车牌号
 	 */
 	private String catId;
+
+	/**
+	 * 预约状态 0等待受理 1通过 2过期 3拒绝
+	 */
+	private Integer reserveStatus;
+
 	/**
 	 * 预约开始时间
 	 */
@@ -48,7 +54,7 @@ public class CatEntity implements Serializable {
 	/**
 	 * 进出校门
 	 */
-	private Boolean entrance;
+	private Integer entrance;
 	/**
 	 * 
 	 */

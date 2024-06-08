@@ -27,10 +27,12 @@ public class VisitInfoRequest {
     /**
      * 随行人员
      */
-    private Boolean accompanyingNum;
+    private Integer accompanyingNum;
 
     /**
      * 拜访事由
      */
     private String visitContext;
+
+
 }
