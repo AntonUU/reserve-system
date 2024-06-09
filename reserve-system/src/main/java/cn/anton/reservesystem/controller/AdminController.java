@@ -1,20 +1,19 @@
 package cn.anton.reservesystem.controller;
 
 import java.util.Arrays;
-import java.util.Map;
 
-import cn.anton.commonpackage.common.utils.PageUtils;
 import cn.anton.commonpackage.common.utils.R;
+import cn.anton.reservesystem.request.ReserveInfoListRequest;
+import cn.anton.reservesystem.service.ReserveService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 import cn.anton.reservesystem.entity.AdminEntity;
 import cn.anton.reservesystem.service.AdminService;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 
 /**
@@ -25,21 +24,14 @@ import cn.anton.reservesystem.service.AdminService;
  * @date 2024-06-06 23:37:37
  */
 @RestController
-@RequestMapping("reservesystem/admin")
+@RequestMapping("/reservesystem/admin")
 public class AdminController {
+
     @Autowired
     private AdminService adminService;
 
-    /**
-     * 列表
-     */
-    @RequestMapping("/list")
-    public R list(@RequestParam Map<String, Object> params){
-        PageUtils page = adminService.queryPage(params);
-
-        return R.ok().put("page", page);
-    }
-
+    @Autowired
+    private ReserveService reserveService;
 
     /**
      * 信息
@@ -81,4 +73,18 @@ public class AdminController {
         return R.ok();
     }
 
+
+    /**
+     * 列表
+     */
+    @GetMapping("/list")
+    public R reserveList(@Validated
+                         @RequestParam
+                         @Min(value = 1L, message = "参数错误....")
+                         @Max(value = 999L, message= "参数错误....")
+                         Integer nextPage ){
+        R result = reserveService.queryPageReserveLimit10(nextPage);
+
+        return result;
+    }
 }

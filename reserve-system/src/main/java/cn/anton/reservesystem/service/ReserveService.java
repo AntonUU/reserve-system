@@ -3,6 +3,7 @@ package cn.anton.reservesystem.service;
 import cn.anton.commonpackage.common.utils.PageUtils;
 import cn.anton.commonpackage.common.utils.R;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveInfoListRequest;
 import cn.anton.reservesystem.request.ReserveSearchRequest;
 import cn.anton.reservesystem.response.ReserveProcessResponse;
 import cn.anton.reservesystem.response.ReserveSearchResponse;
@@ -30,5 +31,7 @@ public interface ReserveService extends IService<ReserveEntity> {
     void cancellationOfAuthor(Long reserveId);
 
     R search(ReserveSearchRequest requestBody);
+
+    R queryPageReserveLimit10(Integer nextPage);
 }
 

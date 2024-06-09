@@ -7,12 +7,15 @@ import cn.anton.commonpackage.common.utils.Query;
 import cn.anton.commonpackage.common.utils.R;
 import cn.anton.reservesystem.listener.ReserveMessageListener;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveInfoListRequest;
 import cn.anton.reservesystem.request.ReserveSearchRequest;
 import cn.anton.reservesystem.request.VisitInfoRequest;
+import cn.anton.reservesystem.response.ReservePageResponse;
 import cn.anton.reservesystem.response.ReserveProcessResponse;
 import cn.anton.reservesystem.response.ReserveSearchResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
@@ -21,6 +24,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Map;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
@@ -56,6 +60,11 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
         return new PageUtils(page);
     }
 
+    /**
+     * 将预约申请信息发送给KafkaBroker
+     * @param requestBody
+     * @return
+     */
     @Override
     public R reserveAppRequest(ReserveAppRequest requestBody) {
         try {
@@ -71,6 +80,12 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
         return R.ok("已预约, 请等待受理");
     }
 
+    /**
+     * 添加预约申请
+     * @param request
+     * @param date
+     * @return
+     */
     @Override
     public ReserveProcessResponse savePersonReserve(ReserveAppRequest request, Date date){
         ReserveEntity reserveEntity = new ReserveEntity();
@@ -125,6 +140,31 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
 
 
         return R.ok().put("data", response);
+    }
+
+    /**
+     * 分页查询
+     * @return
+     */
+    @Override
+    public R queryPageReserveLimit10(Integer nextPage) {
+        int currentPage = nextPage;
+        nextPage = ( nextPage - 1) * 10;
+        Integer count = reserveDao.viewWaitAcceptance();
+        if (nextPage > count) {
+            return R.error(HttpStatus.SC_INTERNAL_SERVER_ERROR, "服务器异常.....");
+        }
+
+        List<ReserveEntity> reserves =
+                reserveDao.queryPageReserveLimit10(nextPage);
+        ReservePageResponse reservePageResponse = new ReservePageResponse();
+        reservePageResponse.setReserves(reserves);
+        reservePageResponse.setTotalCount(count);
+        int totalPage = count % 10 == 0 ? count / 10 : count / 10 + 1;
+        reservePageResponse.setTotalPage(totalPage);
+        reservePageResponse.setCurrentPage(currentPage);
+
+        return R.ok().put("data", reservePageResponse);
     }
 
 }

@@ -1,11 +1,14 @@
 package cn.anton.reservesystem.Exception;
 
 import cn.anton.commonpackage.common.utils.R;
+import cn.anton.commonpackage.common.validator.group.CatGroup;
 import org.apache.http.HttpStatus;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.support.MethodArgumentNotValidException;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
@@ -17,7 +20,7 @@ import java.util.HashMap;
  * @email itanton666@gmail.com
  * @date 2024/6/9 11:37
  */
-@RestControllerAdvice(basePackages = "cn.anton.reservesystem.controller")
+@RestControllerAdvice(annotations = {})
 public class ReserveExceptionControllerAdvice {
 
     private static final Logger logger = LoggerFactory.getLogger(ReserveExceptionControllerAdvice.class);
@@ -26,9 +29,13 @@ public class ReserveExceptionControllerAdvice {
     public R handleValidException(MethodArgumentNotValidException e) {
         printException(e.getMessage(), e.getClass());
 
-        // 可以通过MethodArgumentNotValidException来获取异常的详细信息, 这里我就不做了
+        StringBuilder sb = new StringBuilder();
+        assert e.getBindingResult() != null;
+        e.getBindingResult().getFieldErrors().forEach(error -> {
+            sb.append(error.getDefaultMessage()).append("\n");
+        });
 
-        return R.error(HttpStatus.SC_CONFLICT, "参数错误...");
+        return R.error(HttpStatus.SC_CONFLICT, sb.toString());
     }
 
     @ExceptionHandler(value = {Throwable.class})
@@ -38,7 +45,7 @@ public class ReserveExceptionControllerAdvice {
     }
 
     private void printException(String message, Class<?> aclass){
-        logger.error("数据校验出现问题:{}, 异常:{}", message, aclass);
+        logger.error("服务器运行出错:{}, 异常:{}", message, aclass);
     }
 
 }

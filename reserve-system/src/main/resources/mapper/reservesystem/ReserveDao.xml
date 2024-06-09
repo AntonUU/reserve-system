@@ -49,5 +49,29 @@
         LIMIT 1;
     </select>
 
+    <!--  待受理预约分页查询  TODO 这里忘记做随行人员的查询了，不管了  -->
+    <select id="queryPageReserveLimit10" resultMap="reserveMap">
+        SELECT
+            reserve_id,
+            reserve_name,
+            reserve_sex,
+            reserve_phone,
+            reserve_door,
+            reserve_status,
+            start_datetime,
+            end_datetime,
+            update_datetime
+        FROM tab_reserve
+        WHERE
+            reserve_status = 0
+        ORDER BY update_datetime, start_datetime
+        LIMIT #{startLimit}, 10
+    </select>
+
+    <!--  查询等待受理总条数  -->
+    <select id="viewWaitAcceptance" resultType="java.lang.Integer">
+        select wait_acceptance_count from view_wait_acceptance;
+    </select>
+
 
 </mapper>
