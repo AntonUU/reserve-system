@@ -3,7 +3,9 @@ package cn.anton.reservesystem.service;
 import cn.anton.commonpackage.common.utils.PageUtils;
 import cn.anton.commonpackage.common.utils.R;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
 import cn.anton.reservesystem.response.ReserveProcessResponse;
+import cn.anton.reservesystem.response.ReserveSearchResponse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import cn.anton.reservesystem.entity.ReserveEntity;
 
@@ -26,5 +28,7 @@ public interface ReserveService extends IService<ReserveEntity> {
     ReserveProcessResponse savePersonReserve(ReserveAppRequest request, Date date);
 
     void cancellationOfAuthor(Long reserveId);
+
+    R search(ReserveSearchRequest requestBody);
 }
 

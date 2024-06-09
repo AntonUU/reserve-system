@@ -18,5 +18,36 @@
         <result property="updateDatetime" column="update_datetime"/>
     </resultMap>
 
+    <resultMap type="cn.anton.reservesystem.response.ReserveSearchResponse" id="reserveSearchMap">
+        <result property="reserveName" column="reserve_name"/>
+        <result property="reserveSex" column="reserve_sex"/>
+        <result property="reservePhone" column="reserve_phone"/>
+        <result property="reserveStatus" column="reserve_status"/>
+        <result property="createTime" column="update_datetime"/>
+        <result property="startDateTime" column="start_datetime"/>
+        <result property="endDateTime" column="end_datetime"/>
+        <result property="portrait" column="portrait"/>
+    </resultMap>
+
+    <!-- 预约记录查询   -->
+    <select id="reserveSearch" resultMap="reserveSearchMap" parameterType="cn.anton.reservesystem.request.ReserveSearchRequest">
+        SELECT
+            `reserve_name`,
+            `reserve_phone`,
+            `reserve_sex`,
+            `reserve_status`,
+            `update_datetime`,
+            `start_datetime`,
+            `end_datetime`,
+            `portrait`
+        FROM `tab_reserve`
+        WHERE `reserve_name` = #{reserveName}
+        AND `reserve_phone` = #{reservePhone}
+        AND RIGHT(`reserve_card`, 4) = #{theLastFourId}
+        AND (reserve_status = 0 OR reserve_status = 1)
+        ORDER BY `start_datetime` DESC
+        LIMIT 1;
+    </select>
+
 
 </mapper>

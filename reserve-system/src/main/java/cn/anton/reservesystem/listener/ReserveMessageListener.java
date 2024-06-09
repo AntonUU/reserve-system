@@ -122,7 +122,9 @@ public class ReserveMessageListener {
                     "-" +
                     redisKeyInfo.reserveInfo +
                     "-" +
-                    redisKeyInfo.ttl;
+                    redisKeyInfo.ttl +
+                    "-" +
+                    System.currentTimeMillis();
 
             redisTemplate.opsForValue()
                     .set(key, json, redisKeyInfo.ttl, TimeUnit.SECONDS);

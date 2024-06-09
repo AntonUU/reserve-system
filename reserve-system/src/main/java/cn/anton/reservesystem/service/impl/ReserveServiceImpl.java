@@ -7,8 +7,10 @@ import cn.anton.commonpackage.common.utils.Query;
 import cn.anton.commonpackage.common.utils.R;
 import cn.anton.reservesystem.listener.ReserveMessageListener;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
 import cn.anton.reservesystem.request.VisitInfoRequest;
 import cn.anton.reservesystem.response.ReserveProcessResponse;
+import cn.anton.reservesystem.response.ReserveSearchResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -40,6 +42,9 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
 
     @Autowired
     private ObjectMapper objectMapper;
+
+    @Autowired
+    private ReserveDao reserveDao;
 
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
@@ -96,6 +101,30 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
         entity.setUpdateDatetime(new Date());
         updateById(entity);
         logger.info("行人预约id: {} 授权取消成功", reserveId);
+    }
+
+    /*
+        预约信息查询
+     */
+    @Override
+    public R search(ReserveSearchRequest requestBody) {
+        System.out.println(requestBody);
+        ReserveSearchResponse response = reserveDao.reserveSearch(requestBody);
+
+        // 没有结果
+        if (response == null) {
+            return R.ok("未能查询到您的预约信息");
+        }
+
+        // 超过结束通行时间
+        long endTime = response.getEndDateTime().getTime();
+        long currentTime = System.currentTimeMillis();
+        if (endTime < currentTime) {
+            return R.ok("未能查询到您的预约信息");
+        }
+
+
+        return R.ok().put("data", response);
     }
 
 }

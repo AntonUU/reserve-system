@@ -55,10 +55,15 @@ spring:
       type: batch # 设置批量消费
       concurrency: 2 # 创建的消费者监听数量
 
+
 logging:
   level:
     root: info # 日志级别
   file: # 这里日志信息只可以保留默认的logback配置(7天), 有需要的话自行修改
-    name: reserve_system_log.log # 日志文件名
+    name: ./logs/reserve_system_log.log # 日志文件名
     path: ./logs  # 日志保存路径
   pattern: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n' # 设置日志格式
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

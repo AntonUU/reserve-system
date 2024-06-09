@@ -5,8 +5,11 @@ import java.util.Map;
 
 import cn.anton.commonpackage.common.utils.PageUtils;
 import cn.anton.commonpackage.common.utils.R;
+import cn.anton.commonpackage.common.validator.group.PersonGroup;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.anton.reservesystem.entity.ReserveEntity;
 import cn.anton.reservesystem.service.ReserveService;
 
+import javax.validation.Valid;
 
 
 /**
@@ -34,10 +38,19 @@ public class ReserveController {
 
 
     @RequestMapping("/reserve")
-    public R reserveAppRequest(@RequestBody ReserveAppRequest requestBody) {
+    public R reserveAppRequest(
+            @Validated({PersonGroup.class})
+            @RequestBody ReserveAppRequest requestBody) {
         // 2、 将信息打成JSON，使用Mq进行消费
         R result = reserveService.reserveAppRequest(requestBody);
         //3、 给用户展示预约等待审核页面
+        return result;
+    }
+
+    @RequestMapping("/search")
+    public R reserveSearch(@Validated
+                               @RequestBody ReserveSearchRequest requestBody){
+        R result =  reserveService.search(requestBody);
         return result;
     }
 

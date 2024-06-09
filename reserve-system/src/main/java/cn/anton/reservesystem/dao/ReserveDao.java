@@ -1,6 +1,8 @@
 package cn.anton.reservesystem.dao;
 
 import cn.anton.reservesystem.entity.ReserveEntity;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
+import cn.anton.reservesystem.response.ReserveSearchResponse;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -13,5 +15,7 @@ import org.apache.ibatis.annotations.Mapper;
  */
 @Mapper
 public interface ReserveDao extends BaseMapper<ReserveEntity> {
-	
+
+    ReserveSearchResponse reserveSearch(ReserveSearchRequest request);
+
 }
