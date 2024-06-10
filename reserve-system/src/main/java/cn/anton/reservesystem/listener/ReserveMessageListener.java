@@ -78,6 +78,13 @@ public class ReserveMessageListener {
 
             try {
                 request = objectMapper.readValue(json, ReserveAppRequest.class);
+                // 检查是否为合法预约
+                long currentTimeMillis = System.currentTimeMillis();
+                long endTime = request.getEndDatetime().getTime();
+                long startTime = request.getStartDatetime().getTime();
+                if (startTime >= endTime || currentTimeMillis > endTime) {
+                    return;
+                }
             } catch (JsonProcessingException e) {
                 throw new RuntimeException("字符串转实体类转换失败...");
             }
@@ -131,6 +138,7 @@ public class ReserveMessageListener {
             logger.info("预约信息上传redis成功.... 预约类型: {}, 预约id: {}", redisKeyInfo.reserveType, redisKeyInfo.typeId);
 
             /*
+                (我已经开启了车辆的暴力自动审批功能)
                 行人自动审核
                     方式一: 通过人脸照 身份证id 姓名去第三方云中验证(推荐)安全度高
                     方式二: 通过人像识别算法  只要符合人脸均可通过
@@ -151,18 +159,16 @@ public class ReserveMessageListener {
         RedisKeyInfo(ReserveProcessResponse resultProcess, String reserveType){
             CatEntity catEntity = resultProcess.getCatEntity();
             ReserveEntity reserveEntity = resultProcess.getReserveEntity();
-            long rStartTime = -1L;
+            long rStartTime = System.currentTimeMillis();
             long rEndTime = -1L;
 
             if (ReserveConstant.RESERVE_TYPE_PERSON.equals(reserveType)) {
                 this.reserveInfo = reserveEntity.getReservePhone();
                 this.typeId = reserveEntity.getReserveId();
-                rStartTime = reserveEntity.getStartDatetime().getTime();
                 rEndTime = reserveEntity.getEndDatetime().getTime();
             } else {
                 this.reserveInfo = catEntity.getCatId();
                 this.typeId = catEntity.getTabId();
-                rStartTime = catEntity.getStartDatetime().getTime();
                 rEndTime = catEntity.getEndDatetime().getTime();
             }
             this.reserveType = reserveType;

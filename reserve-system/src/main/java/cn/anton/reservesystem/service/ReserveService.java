@@ -33,5 +33,8 @@ public interface ReserveService extends IService<ReserveEntity> {
     R search(ReserveSearchRequest requestBody);
 
     R queryPageReserveLimit10(Integer nextPage);
+
+    R reserveProcess(Long reserveId, Integer reserveStatus);
+
 }
 

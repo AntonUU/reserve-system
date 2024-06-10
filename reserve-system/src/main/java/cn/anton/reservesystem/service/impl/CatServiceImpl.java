@@ -73,7 +73,8 @@ public class CatServiceImpl extends ServiceImpl<CatDao, CatEntity> implements Ca
         CatEntity catEntity = new CatEntity();
         BeanUtils.copyProperties(request, catEntity);
         catEntity.setUpdateDatetime(date);
-        catEntity.setReserveStatus(ReserveConstant.RESERVE_STANDBY_ACCEPTANCE);
+        // 车辆自动审批
+        catEntity.setReserveStatus(ReserveConstant.RESERVE_PASSED);
 
         VisitInfoRequest visitInfo = request.getVisitInfo();
         save(catEntity);

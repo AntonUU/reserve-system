@@ -2,6 +2,7 @@ package cn.anton.reservesystem.controller;
 
 import java.util.Arrays;
 
+import cn.anton.commonpackage.common.constant.ReserveConstant;
 import cn.anton.commonpackage.common.utils.R;
 import cn.anton.reservesystem.request.ReserveInfoListRequest;
 import cn.anton.reservesystem.service.ReserveService;
@@ -87,4 +88,25 @@ public class AdminController {
 
         return result;
     }
+
+    /**
+     * 预约审批通过
+     * @return
+     */
+    @GetMapping("/pass")
+    public R reservePass(@RequestParam Long reserveId){
+        R result = reserveService.reserveProcess(reserveId, ReserveConstant.RESERVE_PASSED);
+        return result;
+    }
+
+    /**
+     * 不接受预约
+     * @return
+     */
+    @GetMapping("/refused")
+    public R reserveRefused(@RequestParam Long reserveId){
+        R result = reserveService.reserveProcess(reserveId, ReserveConstant.RESERVE_REFUSED);
+        return result;
+    }
+
 }

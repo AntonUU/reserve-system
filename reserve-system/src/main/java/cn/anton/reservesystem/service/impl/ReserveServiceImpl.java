@@ -167,4 +167,19 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
         return R.ok().put("data", reservePageResponse);
     }
 
+    /*
+        预约通过  由于没有技术含量 只做简单处理
+     */
+    @Override
+    public R reserveProcess(Long reserveId, Integer reserveStatus) {
+        ReserveEntity entity = new ReserveEntity();
+        entity.setReserveStatus(reserveStatus);
+        entity.setReserveId(reserveId);
+        entity.setUpdateDatetime(new Date());
+        updateById(entity);
+        return R.ok();
+    }
+
+
+
 }
