@@ -10,11 +10,7 @@ import cn.anton.reservesystem.request.ReserveAppRequest;
 import cn.anton.reservesystem.request.ReserveSearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cn.anton.reservesystem.entity.ReserveEntity;
 import cn.anton.reservesystem.service.ReserveService;
@@ -37,7 +33,7 @@ public class ReserveController {
     private ReserveService reserveService;
 
 
-    @RequestMapping("/reserve")
+    @PostMapping(value = "/reserve")
     public R reserveAppRequest(
             @Validated({PersonGroup.class})
             @RequestBody ReserveAppRequest requestBody) {
@@ -62,6 +58,7 @@ public class ReserveController {
      */
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
+        System.out.println("被访问了...");
         PageUtils page = reserveService.queryPage(params);
 
         return R.ok().put("page", page);

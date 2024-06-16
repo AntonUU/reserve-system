@@ -20,14 +20,14 @@ import java.util.HashMap;
  * @email itanton666@gmail.com
  * @date 2024/6/9 11:37
  */
-@RestControllerAdvice(annotations = {})
+@RestControllerAdvice
 public class ReserveExceptionControllerAdvice {
 
     private static final Logger logger = LoggerFactory.getLogger(ReserveExceptionControllerAdvice.class);
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public R handleValidException(MethodArgumentNotValidException e) {
-        printException(e.getMessage(), e.getClass());
+        printException(e.getMessage(), e.getClass(), e);
 
         StringBuilder sb = new StringBuilder();
         assert e.getBindingResult() != null;
@@ -40,12 +40,12 @@ public class ReserveExceptionControllerAdvice {
 
     @ExceptionHandler(value = {Throwable.class})
     public R handleException(Throwable e){
-        printException(e.getMessage(), e.getClass());
+        printException(e.getMessage(), e.getClass(), e);
         return R.error(HttpStatus.SC_CONFLICT, "参数错误...");
     }
 
-    private void printException(String message, Class<?> aclass){
-        logger.error("服务器运行出错:{}, 异常:{}", message, aclass);
+    private void printException(String message, Class<?> aclass, Throwable throwable){
+        logger.error("服务器运行出错:{}, 异常:{}, 堆栈信息:", message, aclass, throwable);
     }
 
 }
