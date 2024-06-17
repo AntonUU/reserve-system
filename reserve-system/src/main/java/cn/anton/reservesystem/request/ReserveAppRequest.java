@@ -9,13 +9,16 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 /**
  * 预约申请参数
  */
 @Data
+@ToString
 public class ReserveAppRequest {
 
     /**
@@ -54,13 +57,13 @@ public class ReserveAppRequest {
      * 预约开始时间
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    @NotBlank(message = "开始错时间错误...")
+    @NotNull(message = "开始时间不能为空")
     private Date startDatetime;
     /**
      * 预约结束时间
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
-    @NotBlank(message = "结束时间错误....")
+    @NotNull(message = "结束时间不能为空")
     private Date endDatetime;
 
     /**
@@ -89,8 +92,8 @@ public class ReserveAppRequest {
     /**
      * 被访信息(选填)
      */
-    @NotBlank(groups = {CatGroup.class})
-    private VisitInfoRequest visitInfo;;
-
+    @Valid
+    @NotNull(groups = {CatGroup.class}, message = "被访信息不能为空")
+    private VisitInfoRequest visitInfo;
 
 }

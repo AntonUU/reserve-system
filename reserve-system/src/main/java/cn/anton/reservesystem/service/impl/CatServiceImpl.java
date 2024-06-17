@@ -5,11 +5,14 @@ import cn.anton.commonpackage.common.constant.ReserveConstant;
 import cn.anton.commonpackage.common.utils.PageUtils;
 import cn.anton.commonpackage.common.utils.Query;
 import cn.anton.commonpackage.common.utils.R;
+import cn.anton.reservesystem.dao.ReserveDao;
 import cn.anton.reservesystem.entity.ReserveEntity;
 import cn.anton.reservesystem.request.CatReserveAppRequest;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
 import cn.anton.reservesystem.request.VisitInfoRequest;
 import cn.anton.reservesystem.response.ReserveProcessResponse;
+import cn.anton.reservesystem.response.ReserveSearchResponse;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.slf4j.Logger;
@@ -41,6 +44,8 @@ public class CatServiceImpl extends ServiceImpl<CatDao, CatEntity> implements Ca
     @Autowired
     private KafkaTemplate<String, Object> kafkaTemplate;
 
+    @Autowired
+    private CatDao catDao;
 
 
     @Override
@@ -95,6 +100,25 @@ public class CatServiceImpl extends ServiceImpl<CatDao, CatEntity> implements Ca
         entity.setUpdateDatetime(new Date());
         updateById(entity);
         logger.info("车辆预约id: {} 授权取消成功", reserveId);
+    }
+
+    @Override
+    public R search(ReserveSearchRequest requestBody) {
+        ReserveSearchResponse response = catDao.reserveSearch(requestBody);
+
+        // 没有结果
+        if (response == null) {
+            return R.ok("未能查询到您的预约信息");
+        }
+
+        // 超过结束通行时间
+        long endTime = response.getEndDateTime().getTime();
+        long currentTime = System.currentTimeMillis();
+        if (endTime < currentTime) {
+            return R.ok("未能查询到您的预约信息");
+        }
+
+        return R.ok().put("data", response);
     }
 
 }

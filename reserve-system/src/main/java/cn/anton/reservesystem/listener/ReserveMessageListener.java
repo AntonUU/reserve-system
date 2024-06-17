@@ -75,7 +75,6 @@ public class ReserveMessageListener {
             String json = record.value();
             ReserveAppRequest request = null;
             Date date = new Date();
-
             try {
                 request = objectMapper.readValue(json, ReserveAppRequest.class);
                 // 检查是否为合法预约
@@ -88,7 +87,7 @@ public class ReserveMessageListener {
             } catch (JsonProcessingException e) {
                 throw new RuntimeException("字符串转实体类转换失败...");
             }
-
+            System.out.println(request);
             if (request == null) {
                 continue;
             }
@@ -112,12 +111,15 @@ public class ReserveMessageListener {
             // 行人情况下 被访人不是必填项
             VisitEntity visitEntity = null;
             if (!(ReserveConstant.RESERVE_TYPE_PERSON.equals(reserveType) && visitInfo == null)) {
-                visitEntity = visitService.saveVisitInfo(visitInfo, date);
+                if (ReserveConstant.RESERVE_TYPE_PERSON.equals(reserveType) && visitInfo.getVisitName().isEmpty()) {
+                } else {
+                    visitEntity = visitService.saveVisitInfo(visitInfo, date);
 
-                reserveVisitAssociationService.saveAssociationInfo(
-                        visitEntity.getVisitId(),
-                        ReserveConstant.RESERVE_TYPE_PERSON.equals(reserveType) ? reserveEntity.getReserveId() : catEntity.getTabId(),
-                        reserveType);
+                    reserveVisitAssociationService.saveAssociationInfo(
+                            visitEntity.getVisitId(),
+                            ReserveConstant.RESERVE_TYPE_PERSON.equals(reserveType) ? reserveEntity.getReserveId() : catEntity.getTabId(),
+                            reserveType);
+                }
             }
 
             // 将数据保存到Redis中 并设置过期时间

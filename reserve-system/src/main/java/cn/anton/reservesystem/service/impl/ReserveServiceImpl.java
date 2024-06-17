@@ -123,7 +123,6 @@ public class ReserveServiceImpl extends ServiceImpl<ReserveDao, ReserveEntity> i
      */
     @Override
     public R search(ReserveSearchRequest requestBody) {
-        System.out.println(requestBody);
         ReserveSearchResponse response = reserveDao.reserveSearch(requestBody);
 
         // 没有结果

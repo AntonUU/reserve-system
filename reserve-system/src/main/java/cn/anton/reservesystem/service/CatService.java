@@ -4,6 +4,7 @@ import cn.anton.commonpackage.common.utils.PageUtils;
 import cn.anton.commonpackage.common.utils.R;
 import cn.anton.reservesystem.request.CatReserveAppRequest;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
 import cn.anton.reservesystem.response.ReserveProcessResponse;
 import com.baomidou.mybatisplus.extension.service.IService;
 import cn.anton.reservesystem.entity.CatEntity;
@@ -27,5 +28,8 @@ public interface CatService extends IService<CatEntity> {
     ReserveProcessResponse savePersonReserve(ReserveAppRequest request, Date date);
 
     void cancellationOfAuthor(Long reserveId);
+
+    R search(ReserveSearchRequest requestBody);
+
 }
 

@@ -29,7 +29,7 @@
         <result property="portrait" column="portrait"/>
     </resultMap>
 
-    <!-- 预约记录查询   -->
+    <!-- 预约记录查询  TODO  这里可以联表查一下被访信息表  太懒了就不做了  -->
     <select id="reserveSearch" resultMap="reserveSearchMap" parameterType="cn.anton.reservesystem.request.ReserveSearchRequest">
         SELECT
             `reserve_name`,

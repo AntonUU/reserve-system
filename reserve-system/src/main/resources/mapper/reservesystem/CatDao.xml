@@ -15,5 +15,23 @@
         <result property="updateDatetime" column="update_datetime"/>
     </resultMap>
 
+    <resultMap type="cn.anton.reservesystem.response.ReserveSearchResponse" id="reserveSearchMap">
+        <result property="reserveName" column="person_name"/>
+        <result property="reservePhone" column="person_phone"/>
+        <result property="reserveStatus" column="reserve_status"/>
+        <result property="createTime" column="update_datetime"/>
+        <result property="startDateTime" column="start_datetime"/>
+        <result property="endDateTime" column="end_datetime"/>
+    </resultMap>
+
+    <!-- 车辆预约记录查询   -->
+    <select id="reserveSearch" resultMap="reserveSearchMap" parameterType="cn.anton.reservesystem.request.ReserveSearchRequest">
+        SELECT * FROM tab_cat AS t1
+        WHERE t1.person_phone = #{reservePhone} and t1.person_name = #{reserveName} and t1.cat_id = #{catId}
+        AND (t1.reserve_status = 0 OR t1.reserve_status = 1)
+        ORDER BY t1.start_datetime DESC
+        LIMIT 1;
+    </select>
+
 
 </mapper>

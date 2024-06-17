@@ -32,7 +32,6 @@ public class ReserveController {
     @Autowired
     private ReserveService reserveService;
 
-
     @PostMapping(value = "/reserve")
     public R reserveAppRequest(
             @Validated({PersonGroup.class})
@@ -45,7 +44,7 @@ public class ReserveController {
 
     @RequestMapping("/search")
     public R reserveSearch(@Validated
-                               @RequestBody ReserveSearchRequest requestBody){
+                           @RequestBody ReserveSearchRequest requestBody){
         R result =  reserveService.search(requestBody);
         return result;
     }

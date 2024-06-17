@@ -8,10 +8,6 @@ import javax.validation.constraints.NotBlank;
 
 /**
  * 类说明: 被访人信息请求参数
- *
- * @author 丶Anton
- * @email itanton666@gmail.com
- * @date 2024/6/7 09:16
  */
 @Data
 @ToString
@@ -32,7 +28,6 @@ public class VisitInfoRequest {
     /**
      * 随行人员
      */
-    @NotBlank(groups = {CatGroup.class})
     private Integer accompanyingNum;
 
     /**
@@ -40,6 +35,5 @@ public class VisitInfoRequest {
      */
     @NotBlank(groups = {CatGroup.class})
     private String visitContext;
-
 
 }

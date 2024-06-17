@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.HashMap;
 
+
 /**
  * 类说明: 请求参数异常的捕抓
  *
@@ -27,11 +28,12 @@ public class ReserveExceptionControllerAdvice {
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     public R handleValidException(MethodArgumentNotValidException e) {
-        printException(e.getMessage(), e.getClass(), e);
+        BindingResult bindingResult = e.getBindingResult();
+        printException(e.getMessage(), e.getClass(), e, bindingResult);
 
         StringBuilder sb = new StringBuilder();
-        assert e.getBindingResult() != null;
-        e.getBindingResult().getFieldErrors().forEach(error -> {
+        assert bindingResult != null;
+        bindingResult.getFieldErrors().forEach(error -> {
             sb.append(error.getDefaultMessage()).append("\n");
         });
 
@@ -40,12 +42,16 @@ public class ReserveExceptionControllerAdvice {
 
     @ExceptionHandler(value = {Throwable.class})
     public R handleException(Throwable e){
-        printException(e.getMessage(), e.getClass(), e);
+        printException(e.getMessage(), e.getClass(), e, null);
         return R.error(HttpStatus.SC_CONFLICT, "参数错误...");
     }
 
-    private void printException(String message, Class<?> aclass, Throwable throwable){
-        logger.error("服务器运行出错:{}, 异常:{}, 堆栈信息:", message, aclass, throwable);
+    private void printException(String message, Class<?> aclass, Throwable throwable, BindingResult bindingResult){
+        logger.error("服务器运行出错:{}, 异常:{}", message, aclass, throwable);
+        if (bindingResult != null) {
+            bindingResult.getFieldErrors().forEach(error -> {
+                logger.error("字段错误: 字段名: {}, 错误信息: {}", error.getField(), error.getDefaultMessage());
+            });
+        }
     }
-
 }

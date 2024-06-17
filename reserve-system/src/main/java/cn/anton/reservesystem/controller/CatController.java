@@ -8,13 +8,10 @@ import cn.anton.commonpackage.common.utils.R;
 import cn.anton.commonpackage.common.validator.group.CatGroup;
 import cn.anton.reservesystem.request.CatReserveAppRequest;
 import cn.anton.reservesystem.request.ReserveAppRequest;
+import cn.anton.reservesystem.request.ReserveSearchRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import cn.anton.reservesystem.entity.CatEntity;
 import cn.anton.reservesystem.service.CatService;
@@ -34,7 +31,7 @@ public class CatController {
     @Autowired
     private CatService catService;
 
-    @RequestMapping("/reserve")
+    @PostMapping("/reserve")
     public R reserveAppRequest(
             @Validated({CatGroup.class})
             @RequestBody ReserveAppRequest requestBody) {
@@ -44,6 +41,14 @@ public class CatController {
         return result;
     }
 
+    @PostMapping("/search")
+    public R reserveCatSearch(@Validated({CatGroup.class})
+                            @RequestBody ReserveSearchRequest requestBody){
+        R result =  catService.search(requestBody);
+        return result;
+    }
+
+
     /**
      * 列表
      */
@@ -52,47 +57,6 @@ public class CatController {
         PageUtils page = catService.queryPage(params);
 
         return R.ok().put("page", page);
-    }
-
-
-    /**
-     * 信息
-     */
-    @RequestMapping("/info/{tabId}")
-    public R info(@PathVariable("tabId") Long tabId){
-		CatEntity cat = catService.getById(tabId);
-
-        return R.ok().put("cat", cat);
-    }
-
-    /**
-     * 保存
-     */
-    @RequestMapping("/save")
-    public R save(@RequestBody CatEntity cat){
-		catService.save(cat);
-
-        return R.ok();
-    }
-
-    /**
-     * 修改
-     */
-    @RequestMapping("/update")
-    public R update(@RequestBody CatEntity cat){
-		catService.updateById(cat);
-
-        return R.ok();
-    }
-
-    /**
-     * 删除
-     */
-    @RequestMapping("/delete")
-    public R delete(@RequestBody Long[] tabIds){
-		catService.removeByIds(Arrays.asList(tabIds));
-
-        return R.ok();
     }
 
 }
