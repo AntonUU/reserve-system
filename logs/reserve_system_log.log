@@ -647,3 +647,462 @@ org.springframework.web.bind.MethodArgumentNotValidException: Validation failed 
 2024-06-18 12:24:19.255  INFO 12271 --- [SpringApplicationShutdownHook] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for producer-1 unregistered
 2024-06-18 12:24:19.261  INFO 12271 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2024-06-18 12:24:19.272  INFO 12271 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-06-18 19:43:13.109  INFO 4026 --- [main] c.a.r.ReserveSystemApplication           : Starting ReserveSystemApplication using Java 1.8.0_202 on ANTONdeMacBook-Pro.local with PID 4026 (/Users/antonluo/Desktop/reserve-system/reserve-system/target/classes started by antonluo in /Users/antonluo/Desktop/reserve-system)
+2024-06-18 19:43:13.112  INFO 4026 --- [main] c.a.r.ReserveSystemApplication           : No active profile set, falling back to 1 default profile: "default"
+2024-06-18 19:43:13.847  INFO 4026 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2024-06-18 19:43:13.848  INFO 4026 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data Redis repositories in DEFAULT mode.
+2024-06-18 19:43:13.872  INFO 4026 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 14 ms. Found 0 Redis repository interfaces.
+2024-06-18 19:43:14.432  INFO 4026 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8000 (http)
+2024-06-18 19:43:14.437  INFO 4026 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-06-18 19:43:14.437  INFO 4026 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.83]
+2024-06-18 19:43:14.596  INFO 4026 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-06-18 19:43:14.598  INFO 4026 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1445 ms
+2024-06-18 19:43:16.017  INFO 4026 --- [main] o.a.k.clients.admin.AdminClientConfig    : AdminClientConfig values: 
+	bootstrap.servers = [localhost:9092]
+	client.dns.lookup = use_all_dns_ips
+	client.id = 
+	connections.max.idle.ms = 300000
+	default.api.timeout.ms = 60000
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 2147483647
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+
+2024-06-18 19:43:16.042  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.1.2
+2024-06-18 19:43:16.043  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f8c67dc3ae0a3265
+2024-06-18 19:43:16.043  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1718710996041
+2024-06-18 19:43:16.314  INFO 4026 --- [main] o.springframework.kafka.core.KafkaAdmin  : Topic 'reserve-system-topic' exists but has a different partition count: 4 not 2
+2024-06-18 19:43:16.316  INFO 4026 --- [kafka-admin-client-thread | adminclient-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.admin.client for adminclient-1 unregistered
+2024-06-18 19:43:16.320  INFO 4026 --- [kafka-admin-client-thread | adminclient-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2024-06-18 19:43:16.322  INFO 4026 --- [kafka-admin-client-thread | adminclient-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2024-06-18 19:43:16.322  INFO 4026 --- [kafka-admin-client-thread | adminclient-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2024-06-18 19:43:16.339  INFO 4026 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-reserve-system-group-id-1
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = reserve-system-group-id
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 5
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 180000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 120000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2024-06-18 19:43:16.359  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.1.2
+2024-06-18 19:43:16.360  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f8c67dc3ae0a3265
+2024-06-18 19:43:16.360  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1718710996359
+2024-06-18 19:43:16.361  INFO 4026 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Subscribed to topic(s): reserve-system-topic
+2024-06-18 19:43:16.369  INFO 4026 --- [main] o.a.k.clients.consumer.ConsumerConfig    : ConsumerConfig values: 
+	allow.auto.create.topics = true
+	auto.commit.interval.ms = 5000
+	auto.offset.reset = latest
+	bootstrap.servers = [localhost:9092]
+	check.crcs = true
+	client.dns.lookup = use_all_dns_ips
+	client.id = consumer-reserve-system-group-id-2
+	client.rack = 
+	connections.max.idle.ms = 540000
+	default.api.timeout.ms = 60000
+	enable.auto.commit = false
+	exclude.internal.topics = true
+	fetch.max.bytes = 52428800
+	fetch.max.wait.ms = 500
+	fetch.min.bytes = 1
+	group.id = reserve-system-group-id
+	group.instance.id = null
+	heartbeat.interval.ms = 3000
+	interceptor.classes = []
+	internal.leave.group.on.close = true
+	internal.throw.on.fetch.stable.offset.unsupported = false
+	isolation.level = read_uncommitted
+	key.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+	max.partition.fetch.bytes = 1048576
+	max.poll.interval.ms = 300000
+	max.poll.records = 5
+	metadata.max.age.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partition.assignment.strategy = [class org.apache.kafka.clients.consumer.RangeAssignor, class org.apache.kafka.clients.consumer.CooperativeStickyAssignor]
+	receive.buffer.bytes = 65536
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 180000
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	session.timeout.ms = 120000
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	value.deserializer = class org.apache.kafka.common.serialization.StringDeserializer
+
+2024-06-18 19:43:16.378  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.1.2
+2024-06-18 19:43:16.379  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f8c67dc3ae0a3265
+2024-06-18 19:43:16.379  INFO 4026 --- [main] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1718710996378
+2024-06-18 19:43:16.379  INFO 4026 --- [main] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Subscribed to topic(s): reserve-system-topic
+2024-06-18 19:43:16.392  INFO 4026 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8000 (http) with context path ''
+2024-06-18 19:43:16.403  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-0 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.405  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-0 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.405  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-1 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.406  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-2 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.406  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-3 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.405  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-1 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.407  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-2 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.407  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Resetting the last seen epoch of partition reserve-system-topic-3 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:43:16.408  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Cluster ID: 2n1PjXmjQc-uztYmC8BT-A
+2024-06-18 19:43:16.408  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.clients.Metadata        : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Cluster ID: 2n1PjXmjQc-uztYmC8BT-A
+2024-06-18 19:43:16.438  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2024-06-18 19:43:16.438  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Discovered group coordinator localhost:9092 (id: 2147483646 rack: null)
+2024-06-18 19:43:16.439  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] (Re-)joining group
+2024-06-18 19:43:16.439  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] (Re-)joining group
+2024-06-18 19:43:16.633  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Request joining group due to: need to re-join with the given member-id
+2024-06-18 19:43:16.633  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Request joining group due to: need to re-join with the given member-id
+2024-06-18 19:43:16.638  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] (Re-)joining group
+2024-06-18 19:43:16.638  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] (Re-)joining group
+2024-06-18 19:43:16.860  INFO 4026 --- [main] c.a.r.ReserveSystemApplication           : Started ReserveSystemApplication in 4.167 seconds (JVM running for 4.935)
+2024-06-18 19:43:19.710  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Successfully joined group with generation Generation{generationId=208, memberId='consumer-reserve-system-group-id-1-e8e40ecb-a79f-4cbc-87e2-4a0428af5173', protocol='range'}
+2024-06-18 19:43:19.710  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Successfully joined group with generation Generation{generationId=208, memberId='consumer-reserve-system-group-id-2-afda86e4-52c8-4e71-9cf1-36330cf3d5cd', protocol='range'}
+2024-06-18 19:43:19.742  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Finished assignment for group at generation 208: {consumer-reserve-system-group-id-1-e8e40ecb-a79f-4cbc-87e2-4a0428af5173=Assignment(partitions=[reserve-system-topic-0, reserve-system-topic-1]), consumer-reserve-system-group-id-2-afda86e4-52c8-4e71-9cf1-36330cf3d5cd=Assignment(partitions=[reserve-system-topic-2, reserve-system-topic-3])}
+2024-06-18 19:43:19.843  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Successfully synced group in generation Generation{generationId=208, memberId='consumer-reserve-system-group-id-1-e8e40ecb-a79f-4cbc-87e2-4a0428af5173', protocol='range'}
+2024-06-18 19:43:19.844  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Notifying assignor about the new Assignment(partitions=[reserve-system-topic-0, reserve-system-topic-1])
+2024-06-18 19:43:19.846  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Adding newly assigned partitions: reserve-system-topic-1, reserve-system-topic-0
+2024-06-18 19:43:19.847  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Successfully synced group in generation Generation{generationId=208, memberId='consumer-reserve-system-group-id-2-afda86e4-52c8-4e71-9cf1-36330cf3d5cd', protocol='range'}
+2024-06-18 19:43:19.847  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Notifying assignor about the new Assignment(partitions=[reserve-system-topic-2, reserve-system-topic-3])
+2024-06-18 19:43:19.848  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Adding newly assigned partitions: reserve-system-topic-3, reserve-system-topic-2
+2024-06-18 19:43:19.903  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Setting offset for partition reserve-system-topic-1 to the committed offset FetchPosition{offset=30, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=24}}
+2024-06-18 19:43:19.903  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Setting offset for partition reserve-system-topic-3 to the committed offset FetchPosition{offset=30, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=24}}
+2024-06-18 19:43:19.903  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Setting offset for partition reserve-system-topic-0 to the committed offset FetchPosition{offset=39, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=24}}
+2024-06-18 19:43:19.903  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Setting offset for partition reserve-system-topic-2 to the committed offset FetchPosition{offset=28, offsetEpoch=Optional.empty, currentLeader=LeaderAndEpoch{leader=Optional[localhost:9092 (id: 1 rack: null)], epoch=24}}
+2024-06-18 19:43:19.905  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.s.k.l.KafkaMessageListenerContainer    : reserve-system-group-id: partitions assigned: [reserve-system-topic-3, reserve-system-topic-2]
+2024-06-18 19:43:19.905  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : reserve-system-group-id: partitions assigned: [reserve-system-topic-1, reserve-system-topic-0]
+2024-06-18 19:43:36.487  INFO 4026 --- [http-nio-8000-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-06-18 19:43:36.489  INFO 4026 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-06-18 19:43:36.493  INFO 4026 --- [http-nio-8000-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2024-06-18 19:43:36.625  INFO 4026 --- [http-nio-8000-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-06-18 19:43:36.925  INFO 4026 --- [http-nio-8000-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-06-18 19:45:01.666  INFO 4026 --- [http-nio-8000-exec-2] o.a.k.clients.producer.ProducerConfig    : Idempotence will be disabled because acks is set to 1, not set to 'all'.
+2024-06-18 19:45:01.668  INFO 4026 --- [http-nio-8000-exec-2] o.a.k.clients.producer.ProducerConfig    : ProducerConfig values: 
+	acks = 1
+	batch.size = 1048576
+	bootstrap.servers = [localhost:9092]
+	buffer.memory = 10485760
+	client.dns.lookup = use_all_dns_ips
+	client.id = producer-1
+	compression.type = none
+	connections.max.idle.ms = 540000
+	delivery.timeout.ms = 120000
+	enable.idempotence = false
+	interceptor.classes = []
+	key.serializer = class org.apache.kafka.common.serialization.StringSerializer
+	linger.ms = 20
+	max.block.ms = 60000
+	max.in.flight.requests.per.connection = 5
+	max.request.size = 1048576
+	metadata.max.age.ms = 300000
+	metadata.max.idle.ms = 300000
+	metric.reporters = []
+	metrics.num.samples = 2
+	metrics.recording.level = INFO
+	metrics.sample.window.ms = 30000
+	partitioner.class = class org.apache.kafka.clients.producer.internals.DefaultPartitioner
+	receive.buffer.bytes = 32768
+	reconnect.backoff.max.ms = 1000
+	reconnect.backoff.ms = 50
+	request.timeout.ms = 30000
+	retries = 3
+	retry.backoff.ms = 100
+	sasl.client.callback.handler.class = null
+	sasl.jaas.config = null
+	sasl.kerberos.kinit.cmd = /usr/bin/kinit
+	sasl.kerberos.min.time.before.relogin = 60000
+	sasl.kerberos.service.name = null
+	sasl.kerberos.ticket.renew.jitter = 0.05
+	sasl.kerberos.ticket.renew.window.factor = 0.8
+	sasl.login.callback.handler.class = null
+	sasl.login.class = null
+	sasl.login.connect.timeout.ms = null
+	sasl.login.read.timeout.ms = null
+	sasl.login.refresh.buffer.seconds = 300
+	sasl.login.refresh.min.period.seconds = 60
+	sasl.login.refresh.window.factor = 0.8
+	sasl.login.refresh.window.jitter = 0.05
+	sasl.login.retry.backoff.max.ms = 10000
+	sasl.login.retry.backoff.ms = 100
+	sasl.mechanism = GSSAPI
+	sasl.oauthbearer.clock.skew.seconds = 30
+	sasl.oauthbearer.expected.audience = null
+	sasl.oauthbearer.expected.issuer = null
+	sasl.oauthbearer.jwks.endpoint.refresh.ms = 3600000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.max.ms = 10000
+	sasl.oauthbearer.jwks.endpoint.retry.backoff.ms = 100
+	sasl.oauthbearer.jwks.endpoint.url = null
+	sasl.oauthbearer.scope.claim.name = scope
+	sasl.oauthbearer.sub.claim.name = sub
+	sasl.oauthbearer.token.endpoint.url = null
+	security.protocol = PLAINTEXT
+	security.providers = null
+	send.buffer.bytes = 131072
+	socket.connection.setup.timeout.max.ms = 30000
+	socket.connection.setup.timeout.ms = 10000
+	ssl.cipher.suites = null
+	ssl.enabled.protocols = [TLSv1.2]
+	ssl.endpoint.identification.algorithm = https
+	ssl.engine.factory.class = null
+	ssl.key.password = null
+	ssl.keymanager.algorithm = SunX509
+	ssl.keystore.certificate.chain = null
+	ssl.keystore.key = null
+	ssl.keystore.location = null
+	ssl.keystore.password = null
+	ssl.keystore.type = JKS
+	ssl.protocol = TLSv1.2
+	ssl.provider = null
+	ssl.secure.random.implementation = null
+	ssl.trustmanager.algorithm = PKIX
+	ssl.truststore.certificates = null
+	ssl.truststore.location = null
+	ssl.truststore.password = null
+	ssl.truststore.type = JKS
+	transaction.timeout.ms = 60000
+	transactional.id = null
+	value.serializer = class org.apache.kafka.common.serialization.StringSerializer
+
+2024-06-18 19:45:01.692  INFO 4026 --- [http-nio-8000-exec-2] o.a.kafka.common.utils.AppInfoParser     : Kafka version: 3.1.2
+2024-06-18 19:45:01.693  INFO 4026 --- [http-nio-8000-exec-2] o.a.kafka.common.utils.AppInfoParser     : Kafka commitId: f8c67dc3ae0a3265
+2024-06-18 19:45:01.694  INFO 4026 --- [http-nio-8000-exec-2] o.a.kafka.common.utils.AppInfoParser     : Kafka startTimeMs: 1718711101692
+2024-06-18 19:45:01.737  INFO 4026 --- [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition reserve-system-topic-0 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:45:01.737  INFO 4026 --- [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition reserve-system-topic-1 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:45:01.737  INFO 4026 --- [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition reserve-system-topic-2 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:45:01.737  INFO 4026 --- [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Resetting the last seen epoch of partition reserve-system-topic-3 to 24 since the associated topicId changed from null to tBfR6jObSUKWpQOWgYHK7g
+2024-06-18 19:45:01.738  INFO 4026 --- [kafka-producer-network-thread | producer-1] org.apache.kafka.clients.Metadata        : [Producer clientId=producer-1] Cluster ID: 2n1PjXmjQc-uztYmC8BT-A
+2024-06-18 19:45:01.747  INFO 4026 --- [http-nio-8000-exec-2] c.a.r.service.impl.ReserveServiceImpl    : 预约申请人: 罗安东, 已进入队列中....
+2024-06-18 19:45:01.993  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] c.a.r.service.impl.ReserveServiceImpl    : 已添加预约信息id: 120, 是否有拜访人: 是
+2024-06-18 19:45:02.012  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] c.a.r.listener.ReserveMessageListener    : 预约信息上传redis成功.... 预约类型: person, 预约id: 120
+2024-06-18 19:46:14.751  INFO 4026 --- [http-nio-8000-exec-3] c.a.r.service.impl.CatServiceImpl        : 预约车辆: 桂A 888888, 申请人: 罗安东, 已进入队列中....
+2024-06-18 19:46:14.822  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] c.a.r.service.impl.CatServiceImpl        : 已添加预约车辆信息id: 23, 车牌号: 桂A 888888
+2024-06-18 19:46:14.877  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] r.s.i.ReserveVisitAssociationServiceImpl : 拜访信息关联成功 [类型: cat, 预约id: 23, 拜访id: 87, 关联id: 85]
+2024-06-18 19:46:14.881  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] c.a.r.listener.ReserveMessageListener    : 预约信息上传redis成功.... 预约类型: cat, 预约id: 23
+2024-06-18 19:52:16.586  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Node -1 disconnected.
+2024-06-18 19:52:16.786  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.clients.NetworkClient   : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Node -1 disconnected.
+2024-06-18 19:52:45.489  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Revoke previously assigned partitions reserve-system-topic-1, reserve-system-topic-0
+2024-06-18 19:52:45.489  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Revoke previously assigned partitions reserve-system-topic-3, reserve-system-topic-2
+2024-06-18 19:52:45.493  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.s.k.l.KafkaMessageListenerContainer    : reserve-system-group-id: partitions revoked: [reserve-system-topic-3, reserve-system-topic-2]
+2024-06-18 19:52:45.493  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : reserve-system-group-id: partitions revoked: [reserve-system-topic-1, reserve-system-topic-0]
+2024-06-18 19:52:45.493  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Member consumer-reserve-system-group-id-1-e8e40ecb-a79f-4cbc-87e2-4a0428af5173 sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2024-06-18 19:52:45.493  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Member consumer-reserve-system-group-id-2-afda86e4-52c8-4e71-9cf1-36330cf3d5cd sending LeaveGroup request to coordinator localhost:9092 (id: 2147483646 rack: null) due to the consumer unsubscribed from all topics
+2024-06-18 19:52:45.496  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Resetting generation due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.496  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Resetting generation due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.496  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Request joining group due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.496  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Request joining group due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.496  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Unsubscribed all topics or patterns and assigned partitions
+2024-06-18 19:52:45.496  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.clients.consumer.KafkaConsumer     : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Unsubscribed all topics or patterns and assigned partitions
+2024-06-18 19:52:45.497  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Resetting generation due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.497  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Resetting generation due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.497  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-1, groupId=reserve-system-group-id] Request joining group due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.497  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.k.c.c.internals.ConsumerCoordinator  : [Consumer clientId=consumer-reserve-system-group-id-2, groupId=reserve-system-group-id] Request joining group due to: consumer pro-actively leaving the group
+2024-06-18 19:52:45.595  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2024-06-18 19:52:45.596  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2024-06-18 19:52:45.596  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2024-06-18 19:52:45.598  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-reserve-system-group-id-1 unregistered
+2024-06-18 19:52:45.599  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-0-C-1] o.s.k.l.KafkaMessageListenerContainer    : reserve-system-group-id: Consumer stopped
+2024-06-18 19:52:45.610  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2024-06-18 19:52:45.611  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2024-06-18 19:52:45.611  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2024-06-18 19:52:45.612  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.a.kafka.common.utils.AppInfoParser     : App info kafka.consumer for consumer-reserve-system-group-id-2 unregistered
+2024-06-18 19:52:45.612  INFO 4026 --- [org.springframework.kafka.KafkaListenerEndpointContainer#0-1-C-1] o.s.k.l.KafkaMessageListenerContainer    : reserve-system-group-id: Consumer stopped
+2024-06-18 19:52:45.775  INFO 4026 --- [SpringApplicationShutdownHook] o.a.k.clients.producer.KafkaProducer     : [Producer clientId=producer-1] Closing the Kafka producer with timeoutMillis = 30000 ms.
+2024-06-18 19:52:45.782  INFO 4026 --- [SpringApplicationShutdownHook] org.apache.kafka.common.metrics.Metrics  : Metrics scheduler closed
+2024-06-18 19:52:45.783  INFO 4026 --- [SpringApplicationShutdownHook] org.apache.kafka.common.metrics.Metrics  : Closing reporter org.apache.kafka.common.metrics.JmxReporter
+2024-06-18 19:52:45.783  INFO 4026 --- [SpringApplicationShutdownHook] org.apache.kafka.common.metrics.Metrics  : Metrics reporters closed
+2024-06-18 19:52:45.785  INFO 4026 --- [SpringApplicationShutdownHook] o.a.kafka.common.utils.AppInfoParser     : App info kafka.producer for producer-1 unregistered
+2024-06-18 19:52:45.786  INFO 4026 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-06-18 19:52:45.799  INFO 4026 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
