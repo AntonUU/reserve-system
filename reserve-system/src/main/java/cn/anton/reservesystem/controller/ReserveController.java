@@ -57,7 +57,6 @@ public class ReserveController {
      */
     @RequestMapping("/list")
     public R list(@RequestParam Map<String, Object> params){
-        System.out.println("被访问了...");
         PageUtils page = reserveService.queryPage(params);
 
         return R.ok().put("page", page);

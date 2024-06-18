@@ -37,7 +37,7 @@ public class AdminController {
     /**
      * 信息
      */
-    @RequestMapping("/info/{adminId}")
+//    @RequestMapping("/info/{adminId}")
     public R info(@PathVariable("adminId") Integer adminId){
 		AdminEntity admin = adminService.getById(adminId);
 
@@ -47,7 +47,7 @@ public class AdminController {
     /**
      * 保存
      */
-    @RequestMapping("/save")
+//    @RequestMapping("/save")
     public R save(@RequestBody AdminEntity admin){
 		adminService.save(admin);
 
@@ -57,7 +57,7 @@ public class AdminController {
     /**
      * 修改
      */
-    @RequestMapping("/update")
+//    @RequestMapping("/update")
     public R update(@RequestBody AdminEntity admin){
 		adminService.updateById(admin);
 
@@ -67,7 +67,7 @@ public class AdminController {
     /**
      * 删除
      */
-    @RequestMapping("/delete")
+//    @RequestMapping("/delete")
     public R delete(@RequestBody Integer[] adminIds){
 		adminService.removeByIds(Arrays.asList(adminIds));
 
