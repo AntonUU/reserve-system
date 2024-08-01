@@ -7,7 +7,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username:
     password:
-    url: jdbc:mysql:///access_reservation?serverTimezone=Asia/Shanghai
+    url:
   redis:
     host: localhost
     port: 6379
@@ -54,6 +54,11 @@ spring:
       missing-topics-fatal: false # 消费端监听的topic不存在时，项目启动会报错(关掉)
       type: batch # 设置批量消费
       concurrency: 2 # 创建的消费者监听数量
+  servlet:
+    multipart:
+      max-file-size: 2MB
+      max-request-size: 2MB
+
 
 
 logging:
@@ -67,3 +72,7 @@ logging:
 mybatis-plus:
   configuration:
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+oss:
+  endpoint: https://oss-cn-guangzhou.aliyuncs.com
+  bucket: reserve-system

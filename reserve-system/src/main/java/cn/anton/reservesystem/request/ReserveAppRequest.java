@@ -50,7 +50,7 @@ public class ReserveAppRequest {
     @IdCardNumber(groups = {PersonGroup.class})
     private String reserveCard;
     /**
-     * 人像图
+     * 人像图  通过我回调给你的URI， 你再重新传给我
      */
     private String portrait;
     /**
