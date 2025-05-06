@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    username:
-    password:
-    url:
+    username: root
+    password: Dong1123
+    url: jdbc:mysql://localhost:3306/access_reservation?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
   redis:
     host: localhost
     port: 6379
@@ -58,7 +58,9 @@ spring:
     multipart:
       max-file-size: 2MB
       max-request-size: 2MB
-
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+  main.allow-bean-definition-overriding: true
 
 
 logging:

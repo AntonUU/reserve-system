@@ -62,8 +62,7 @@
             end_datetime,
             update_datetime
         FROM tab_reserve
-        WHERE
-            reserve_status = 0
+
         ORDER BY update_datetime, start_datetime
         LIMIT #{startLimit}, 10
     </select>

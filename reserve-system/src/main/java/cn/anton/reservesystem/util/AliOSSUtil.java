@@ -42,7 +42,8 @@ public class AliOSSUtil {
     public String putFileByFilePath(String objectName, String localFilePath) throws com.aliyuncs.exceptions.ClientException, IOException {
         String obj = getObjectPath() + objectName;
         log.info("【OSS-文件上传-路径】 文件上传开始 obj = {}", obj);//        String endpoint = "https://oss-cn-guangzhou.aliyuncs.com";
-        EnvironmentVariableCredentialsProvider credentialsProvider = CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
+        EnvironmentVariableCredentialsProvider credentialsProvider =
+                CredentialsProviderFactory.newEnvironmentVariableCredentialsProvider();
 
         // 创建OSSClient实例。
         OSS ossClient = new OSSClientBuilder().build(endpoint, credentialsProvider);

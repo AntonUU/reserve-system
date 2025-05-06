@@ -63,11 +63,14 @@ public class CatServiceImpl extends ServiceImpl<CatDao, CatEntity> implements Ca
         try {
             String json = objectMapper.writeValueAsString(requestBody);
             kafkaTemplate.send(KafkaConstant.RESERVE_SYSTEM_TOPIC_NAME,
-                    ReserveConstant.RESERVE_TYPE_CAT+ "-" + requestBody.getPersonName() + System.currentTimeMillis(),
+                    ReserveConstant.RESERVE_TYPE_CAT+ "-"
+                            + requestBody.getPersonName() + System.currentTimeMillis(),
                     json);
-            logger.info("预约车辆: {}, 申请人: {}, 已进入队列中....", requestBody.getCatId(), requestBody.getPersonName());
+            logger.info("预约车辆: {}, 申请人: {}, 已进入队列中....",
+                    requestBody.getCatId(), requestBody.getPersonName());
         } catch (JsonProcessingException e) {
-            logger.info("预约车辆: {}, 申请人: {}, 类型转换异常....", requestBody.getCatId(), requestBody.getPersonName());
+            logger.info("预约车辆: {}, 申请人: {}, 类型转换异常....",
+                    requestBody.getCatId(), requestBody.getPersonName());
             throw new RuntimeException("消息发送失败, 类型转换异常....");
         }
         return R.ok("已预约, 请等待受理");
